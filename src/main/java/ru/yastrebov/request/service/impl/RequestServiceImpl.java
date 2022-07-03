@@ -17,13 +17,10 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public RequestDTO postRequest(RequestDTO requestDTO) {
         log.info("postRequest - start, requestDTO = {}", requestDTO);
-
         Long uniqueId = System.currentTimeMillis();
         requestDTO.setId(uniqueId);
-
         final RequestDTO message = kafkaProducer.sendMessage(kafkaProducer.createMessageForSending(requestDTO));
         log.info("postRequest - end, requestDTO = {}", requestDTO);
-
         return message;
     }
 }
