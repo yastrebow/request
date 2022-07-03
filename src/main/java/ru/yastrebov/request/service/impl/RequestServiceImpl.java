@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.yastrebov.request.kafka.KafkaProducer;
 import ru.yastrebov.request.model.RequestDTO;
 import ru.yastrebov.request.service.RequestService;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
