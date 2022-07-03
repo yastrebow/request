@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: 'MS Request'
+  description: 'Send the request into the Kafka topic'
+  contact:
+    name: 'Iastrebov Andrei'
+    url: 'https://github.com/yastrebow'
+  version: 1.0-version
+servers:
+  - url: 'http://localhost:8080/'
+    description: 'localhost'
+paths:
+  /requests:
+    post:
+      tags:
+        - credit-request into Kafka
+      summary: Send credit-request into Kafka topic
+      operationId: credit-request
+      description: Send request into Kafka topic 'requests'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestDTO'
+        '404':
+          description: No applications present
+
+components:
+  schemas:
+    RequestDTO:
+      description: Info about credit-request
+      title: Response
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Request id
+          format: int64
+          example: 123456789
+        name:
+          type: string
+          description: name of author of credit-request
+          example: Сидоров Иван Кузьмич
+        birth_date:
+          type: string
+          format: date
+          description: date of birth in format "YYYY-MM-DD"
+          example: 2001-12-14
+        amount:
+          type: integer
+          description: Amount of credit
+          format: int64
+          example: 1000000
+        term:
+          type: integer
+          description: Term of credit
+          format: int32
+          example: 120
