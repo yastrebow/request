@@ -21,9 +21,5 @@ public class RequestController {
     public ResponseEntity<RequestDTO> postRequest(@RequestBody RequestDTO requestDTO) {
 
         return new ResponseEntity<>(requestService.postRequest(requestDTO), HttpStatus.OK);
-
-
     }
-
-
 }
